@@ -1,42 +1,81 @@
-# Tool Discovery Assistant for Cursor
+# Tool Discovery MCP Server
 
-A lightweight tool discovery system that helps you find developer tools relevant to your workflow pain points.
+An MCP server that helps you discover developer tools based on workflow pain points. Works with Cursor, Claude, and other MCP-compatible AI tools.
 
-## What is this?
+## What It Does
 
-Instead of browsing endless "awesome lists" or reading tool roundups, this project enables **conversational tool discovery** inside Cursor:
+When you describe a workflow issue:
+1. **Provides tips** for tools you're already using
+2. **Suggests alternatives** from a curated database of 100+ tools
+3. **Offers handoff** for step-by-step help if you want it
 
-1. You describe a workflow issue or pain point
-2. Cursor reasons about which tools from the database might help
-3. You discuss whether it resonates with your use case
-4. If yes - try it out; if no - move on (no pushy recommendations)
+## Installation
 
-## Components
+```bash
+cd tool-discovery
+npm install
+npm run build
+```
 
-- **`tool-database.json`** - Database of 50-100 developer tools scraped from popular awesome lists, filtered by quality (500+ GitHub stars)
-- **`tool-discovery-skill.md`** - Cursor skill that knows how to use the database for tool discovery conversations
+## Adding to Cursor
+
+Add to your `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "tool-discovery": {
+      "command": "node",
+      "args": ["/path/to/tool-discovery/dist/index.js"]
+    }
+  }
+}
+```
+
+Then restart Cursor.
 
 ## Usage
 
-1. Copy the skill file to your Cursor skills directory
-2. Copy the tool database to a location Cursor can read
-3. Ask Cursor about workflow issues and let it suggest relevant tools
+Just describe a workflow issue naturally in Cursor agent mode. The AI will automatically use the `discover_tools` function when relevant.
 
-## Data Sources
+**Example prompts:**
+- "I'm using Mac dictation for voice input but it makes mistakes. What tools are available?"
+- "I need a better way to test API endpoints"
+- "My terminal workflow feels slow"
 
-Tools are scraped from:
-- [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) - MCP servers for AI tools
-- [awesome-cli-apps](https://github.com/agarrharr/awesome-cli-apps) - CLI utilities
-- [awesome-mac](https://github.com/jaywcjlove/awesome-mac) - Mac productivity apps
-- And other curated lists
+## The Tool
 
-## Refreshing the Database
+**`discover_tools`**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `problem` | string | Description of the workflow issue |
+| `existing_tools` | string[] | (Optional) Tools you're already using |
+
+**Returns:**
+- `tips_for_existing_tools` - Tips for tools you mentioned
+- `alternatives` - Relevant tools from the database
+- `handoff_message` - Offer for deeper help
+
+## Refreshing the Tool Database
 
 ```bash
-python scrape_tools.py
+python3 scrape_tools.py
+npm run build
 ```
 
-This will re-scrape the awesome lists and update the tool database.
+## Development
+
+```bash
+# Run in development mode
+npm run dev
+
+# Build
+npm run build
+
+# Test manually
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | node dist/index.js
+```
 
 ## License
 

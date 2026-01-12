@@ -1,0 +1,33 @@
+{
+  "name": "tool-discovery-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for discovering developer tools based on workflow pain points",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "tool-discovery-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node --esm src/index.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "cursor",
+    "developer-tools",
+    "tool-discovery"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}
