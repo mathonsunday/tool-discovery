@@ -1,5 +1,7 @@
 # Tool Discovery MCP Server
 
+[![npm version](https://badge.fury.io/js/tool-discovery-mcp.svg)](https://www.npmjs.com/package/tool-discovery-mcp)
+
 An MCP server that searches GitHub in real-time to find developer tools for your workflow pain points. Works with Cursor and other MCP-compatible AI tools.
 
 ## What It Does
