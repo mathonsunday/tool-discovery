@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """
-Scrape developer tools from popular awesome lists on GitHub.
-Filters by GitHub stars and outputs a structured JSON database.
+Scrape developer tools from GitHub using search API.
+Much faster than parsing awesome lists individually.
 """
 
 import json
-import re
-import time
-from dataclasses import dataclass, asdict
-from typing import Optional
 import subprocess
+from dataclasses import dataclass, asdict
+from typing import List, Dict
+import urllib.parse
 
 
 @dataclass
@@ -19,256 +18,156 @@ class Tool:
     url: str
     stars: int
     category: str
-    source_list: str
-    tags: list[str]
+    tags: List[str]
 
 
-def run_gh_api(endpoint: str) -> dict | list | None:
-    """Run a GitHub API call using the gh CLI."""
+def run_gh_search(query: str, limit: int = 30) -> List[Dict]:
+    """Run a GitHub search using gh CLI."""
     try:
+        # URL encode the query
+        encoded_query = urllib.parse.quote(query)
+        endpoint = f"/search/repositories?q={encoded_query}&sort=stars&order=desc&per_page={limit}"
+        
         result = subprocess.run(
             ["gh", "api", endpoint],
             capture_output=True,
             text=True,
             check=True
         )
-        return json.loads(result.stdout)
+        data = json.loads(result.stdout)
+        return data.get("items", [])
     except subprocess.CalledProcessError as e:
-        print(f"Error calling GitHub API: {e.stderr}")
-        return None
+        print(f"Error: {e.stderr}")
+        return []
     except json.JSONDecodeError:
-        print(f"Error parsing JSON from: {endpoint}")
-        return None
+        return []
 
 
-def get_repo_stars(owner: str, repo: str) -> int:
-    """Get the star count for a GitHub repository."""
-    data = run_gh_api(f"/repos/{owner}/{repo}")
-    if data and isinstance(data, dict):
-        return data.get("stargazers_count", 0)
-    return 0
+def generate_tags(description: str, topics: List[str], category: str) -> List[str]:
+    """Generate relevant tags from description and topics."""
+    tags = set([category])
+    
+    # Add GitHub topics
+    for topic in topics[:5]:
+        tags.add(topic.replace("-", " "))
+    
+    # Common keywords to look for in description
+    keywords = {
+        "cli": ["cli", "command-line", "terminal"],
+        "mcp": ["mcp", "model context protocol"],
+        "ai": ["ai", "llm", "gpt", "claude", "machine learning"],
+        "git": ["git", "github", "version control"],
+        "mac": ["mac", "macos", "osx"],
+        "productivity": ["productivity", "workflow", "automation"],
+        "documentation": ["documentation", "docs"],
+        "api": ["api", "rest", "http"],
+        "search": ["search", "find", "grep"],
+        "testing": ["test", "testing"],
+        "docker": ["docker", "container", "kubernetes"],
+    }
+    
+    desc_lower = (description or "").lower()
+    for tag, patterns in keywords.items():
+        if any(p in desc_lower for p in patterns):
+            tags.add(tag)
+    
+    return list(tags)[:8]
 
 
-def extract_github_repo(url: str) -> tuple[str, str] | None:
-    """Extract owner/repo from a GitHub URL."""
-    patterns = [
-        r"github\.com/([^/]+)/([^/\s\)#]+)",
-        r"github\.com/([^/]+)/([^/\s\)#]+)\.git",
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, url)
-        if match:
-            owner = match.group(1)
-            repo = match.group(2).rstrip("/").rstrip(")")
-            # Clean up any trailing characters
-            repo = re.sub(r"[^\w\-\.]", "", repo)
-            return owner, repo
-    return None
-
-
-def parse_awesome_list_content(content: str, source_list: str, category: str) -> list[dict]:
-    """Parse markdown content from an awesome list to extract tools."""
+def search_tools_by_category(query: str, category: str, min_stars: int = 500) -> List[Tool]:
+    """Search for tools in a specific category."""
+    print(f"  Searching: {query}")
+    
+    results = run_gh_search(f"{query} stars:>{min_stars}", limit=30)
     tools = []
     
-    # Pattern to match markdown links with descriptions
-    # Format: - [Name](URL) - Description or * [Name](URL) - Description
-    pattern = r"[-*]\s*\[([^\]]+)\]\(([^)]+)\)\s*[-–—:]?\s*(.+?)(?=\n|$)"
-    
-    matches = re.findall(pattern, content, re.MULTILINE)
-    
-    for name, url, description in matches:
-        # Skip non-GitHub links for now (we need stars)
-        if "github.com" not in url.lower():
+    for repo in results:
+        if repo.get("fork"):  # Skip forks
+            continue
+            
+        description = repo.get("description") or ""
+        if len(description) < 10:  # Skip repos with no real description
             continue
         
-        # Clean up description
-        description = description.strip()
-        description = re.sub(r"\s*\[!\[.*?\]\(.*?\)\]\(.*?\)", "", description)  # Remove badges
-        description = re.sub(r"!\[.*?\]\(.*?\)", "", description)  # Remove images
-        description = description.strip(" .-–—")
-        
-        if len(description) < 10:  # Skip entries with very short/no descriptions
-            continue
-        
-        tools.append({
-            "name": name.strip(),
-            "url": url.strip(),
-            "description": description[:300],  # Truncate long descriptions
-            "source_list": source_list,
-            "category": category
-        })
+        tools.append(Tool(
+            name=repo["name"],
+            description=description[:300],
+            url=repo["html_url"],
+            stars=repo["stargazers_count"],
+            category=category,
+            tags=generate_tags(description, repo.get("topics", []), category)
+        ))
     
     return tools
 
 
-def fetch_awesome_list(owner: str, repo: str, path: str = "README.md") -> str | None:
-    """Fetch the content of an awesome list README."""
-    # Get the file content
-    data = run_gh_api(f"/repos/{owner}/{repo}/contents/{path}")
-    if data and isinstance(data, dict) and "download_url" in data:
-        # Fetch the raw content
-        import urllib.request
-        try:
-            with urllib.request.urlopen(data["download_url"]) as response:
-                return response.read().decode("utf-8")
-        except Exception as e:
-            print(f"Error fetching content: {e}")
-    return None
-
-
-def enrich_with_stars(tools: list[dict], min_stars: int = 500) -> list[Tool]:
-    """Add star counts to tools and filter by minimum stars."""
-    enriched = []
-    seen_repos = set()
-    
-    for i, tool in enumerate(tools):
-        repo_info = extract_github_repo(tool["url"])
-        if not repo_info:
-            continue
-        
-        owner, repo = repo_info
-        repo_key = f"{owner}/{repo}".lower()
-        
-        # Skip duplicates
-        if repo_key in seen_repos:
-            continue
-        seen_repos.add(repo_key)
-        
-        # Rate limiting - be nice to GitHub
-        if i > 0 and i % 10 == 0:
-            print(f"  Processed {i}/{len(tools)} tools...")
-            time.sleep(1)
-        
-        stars = get_repo_stars(owner, repo)
-        
-        if stars >= min_stars:
-            # Generate tags from description and category
-            tags = generate_tags(tool["description"], tool["category"])
-            
-            enriched.append(Tool(
-                name=tool["name"],
-                description=tool["description"],
-                url=f"https://github.com/{owner}/{repo}",
-                stars=stars,
-                category=tool["category"],
-                source_list=tool["source_list"],
-                tags=tags
-            ))
-            print(f"  ✓ {tool['name']}: {stars} stars")
-        else:
-            print(f"  ✗ {tool['name']}: {stars} stars (below threshold)")
-    
-    return enriched
-
-
-def generate_tags(description: str, category: str) -> list[str]:
-    """Generate relevant tags from description and category."""
-    tags = [category]
-    
-    # Common keywords to look for
-    keywords = {
-        "cli": ["cli", "command-line", "terminal", "command line"],
-        "mcp": ["mcp", "model context protocol"],
-        "ai": ["ai", "llm", "gpt", "claude", "machine learning", "artificial intelligence"],
-        "git": ["git", "github", "version control"],
-        "mac": ["mac", "macos", "osx"],
-        "productivity": ["productivity", "workflow", "automation"],
-        "documentation": ["documentation", "docs", "readme"],
-        "api": ["api", "rest", "http", "request"],
-        "json": ["json", "yaml", "data"],
-        "search": ["search", "find", "grep"],
-        "editor": ["editor", "ide", "vim", "code"],
-        "testing": ["test", "testing", "qa"],
-        "deployment": ["deploy", "deployment", "ci", "cd"],
-        "docker": ["docker", "container", "kubernetes"],
-        "database": ["database", "sql", "postgres", "mysql"],
-    }
-    
-    desc_lower = description.lower()
-    for tag, patterns in keywords.items():
-        if any(p in desc_lower for p in patterns):
-            if tag not in tags:
-                tags.append(tag)
-    
-    return tags[:6]  # Limit to 6 tags
-
-
-def scrape_awesome_mcp_servers() -> list[dict]:
-    """Scrape awesome-mcp-servers list."""
-    print("Scraping awesome-mcp-servers...")
-    content = fetch_awesome_list("punkpeye", "awesome-mcp-servers")
-    if content:
-        return parse_awesome_list_content(content, "awesome-mcp-servers", "mcp-server")
-    return []
-
-
-def scrape_awesome_cli_apps() -> list[dict]:
-    """Scrape awesome-cli-apps list."""
-    print("Scraping awesome-cli-apps...")
-    content = fetch_awesome_list("agarrharr", "awesome-cli-apps")
-    if content:
-        return parse_awesome_list_content(content, "awesome-cli-apps", "cli-tool")
-    return []
-
-
-def scrape_awesome_mac() -> list[dict]:
-    """Scrape awesome-mac list."""
-    print("Scraping awesome-mac...")
-    content = fetch_awesome_list("jaywcjlove", "awesome-mac")
-    if content:
-        return parse_awesome_list_content(content, "awesome-mac", "mac-app")
-    return []
-
-
 def main():
     print("=" * 60)
-    print("Tool Discovery Database Builder")
+    print("Tool Discovery Database Builder (Fast Mode)")
     print("=" * 60)
     
     all_tools = []
+    seen_urls = set()
     
-    # Scrape each awesome list
-    all_tools.extend(scrape_awesome_mcp_servers())
-    all_tools.extend(scrape_awesome_cli_apps())
-    all_tools.extend(scrape_awesome_mac())
+    # Define search queries by category
+    searches = [
+        # MCP Servers
+        ("topic:mcp-server", "mcp-server"),
+        ("mcp server in:name,description", "mcp-server"),
+        
+        # CLI Tools
+        ("topic:cli-tool", "cli-tool"),
+        ("cli tool developer in:description", "cli-tool"),
+        ("terminal utility in:description", "cli-tool"),
+        
+        # Mac Apps
+        ("topic:macos-app", "mac-app"),
+        ("macos menu bar in:description", "mac-app"),
+        ("mac productivity in:description", "mac-app"),
+        
+        # AI Tools
+        ("topic:ai-tools", "ai-tooling"),
+        ("llm developer tool in:description", "ai-tooling"),
+        ("cursor ai in:description", "ai-tooling"),
+        
+        # Developer Tools
+        ("topic:developer-tools", "dev-tool"),
+        ("developer productivity in:description", "dev-tool"),
+    ]
     
-    print(f"\nFound {len(all_tools)} total tools from awesome lists")
-    print("\nEnriching with GitHub stars (filtering for 500+ stars)...")
+    print("\nSearching GitHub...")
+    for query, category in searches:
+        tools = search_tools_by_category(query, category, min_stars=500)
+        for tool in tools:
+            if tool.url not in seen_urls:
+                seen_urls.add(tool.url)
+                all_tools.append(tool)
+        print(f"    Found {len(tools)} tools, total unique: {len(all_tools)}")
     
-    # Enrich with stars and filter
-    enriched_tools = enrich_with_stars(all_tools, min_stars=500)
+    # Sort by stars and limit
+    all_tools.sort(key=lambda t: t.stars, reverse=True)
+    all_tools = all_tools[:100]
     
-    # Sort by stars descending
-    enriched_tools.sort(key=lambda t: t.stars, reverse=True)
-    
-    # Limit to top 100 tools
-    enriched_tools = enriched_tools[:100]
-    
-    print(f"\nFinal database: {len(enriched_tools)} tools")
+    print(f"\nFinal database: {len(all_tools)} tools")
     
     # Output to JSON
     output = {
         "metadata": {
             "version": "1.0",
-            "tool_count": len(enriched_tools),
+            "tool_count": len(all_tools),
             "min_stars": 500,
-            "sources": [
-                "punkpeye/awesome-mcp-servers",
-                "agarrharr/awesome-cli-apps", 
-                "jaywcjlove/awesome-mac"
-            ]
+            "description": "Developer tools database for conversational discovery"
         },
-        "tools": [asdict(t) for t in enriched_tools]
+        "tools": [asdict(t) for t in all_tools]
     }
     
-    output_path = "tool-database.json"
-    with open(output_path, "w") as f:
+    with open("tool-database.json", "w") as f:
         json.dump(output, f, indent=2)
     
-    print(f"\n✓ Saved to {output_path}")
-    print("\nTop 10 tools by stars:")
-    for tool in enriched_tools[:10]:
-        print(f"  {tool.stars:,} ★ {tool.name}")
+    print("\n✓ Saved to tool-database.json")
+    print("\nTop 15 tools by stars:")
+    for tool in all_tools[:15]:
+        print(f"  {tool.stars:>6,} ★  {tool.name}: {tool.description[:60]}...")
 
 
 if __name__ == "__main__":

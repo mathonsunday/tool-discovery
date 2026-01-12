@@ -1,0 +1,1534 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "tool_count": 100,
+    "min_stars": 500,
+    "description": "Developer tools database for conversational discovery"
+  },
+  "tools": [
+    {
+      "name": "n8n",
+      "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "url": "https://github.com/n8n-io/n8n",
+      "stars": 168191,
+      "category": "mcp-server",
+      "tags": [
+        "ai",
+        "automation",
+        "productivity",
+        "apis",
+        "cli",
+        "data flow",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "system-prompts-and-models-of-ai-tools",
+      "description": "FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts",
+      "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "stars": 107453,
+      "category": "ai-tooling",
+      "tags": [
+        "ai",
+        "cursor",
+        "bolt",
+        "ai-tooling",
+        "copilot",
+        "cluely"
+      ]
+    },
+    {
+      "name": "awesome-mac",
+      "description": "\uf8ff Now we have become very big, Different from the original idea. Collect premium software in various categories.",
+      "url": "https://github.com/jaywcjlove/awesome-mac",
+      "stars": 97512,
+      "category": "mac-app",
+      "tags": [
+        "awesome",
+        "apple",
+        "app",
+        "application",
+        "apps",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "puppeteer",
+      "description": "JavaScript API for Chrome and Firefox",
+      "url": "https://github.com/puppeteer/puppeteer",
+      "stars": 93254,
+      "category": "dev-tool",
+      "tags": [
+        "chromium",
+        "automation",
+        "developer tools",
+        "chrome",
+        "dev-tool",
+        "api",
+        "firefox"
+      ]
+    },
+    {
+      "name": "gemini-cli",
+      "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "stars": 90523,
+      "category": "mcp-server",
+      "tags": [
+        "gemini api",
+        "gemini",
+        "ai",
+        "ai agents",
+        "cli",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "awesome-mcp-servers",
+      "description": "A collection of MCP servers.",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "stars": 78616,
+      "category": "mcp-server",
+      "tags": [
+        "ai",
+        "mcp",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "hoppscotch",
+      "description": "Open-Source API Development Ecosystem \u2022 https://hoppscotch.io \u2022 Offline, On-Prem & Cloud \u2022 Web, Desktop & CLI \u2022 Open-Source Alternative to Postman, Insomnia",
+      "url": "https://github.com/hoppscotch/hoppscotch",
+      "stars": 77509,
+      "category": "dev-tool",
+      "tags": [
+        "api rest",
+        "api client",
+        "api testing",
+        "developer tools",
+        "api",
+        "dev-tool",
+        "cli"
+      ]
+    },
+    {
+      "name": "browser-use",
+      "description": "\ud83c\udf10 Make websites accessible for AI agents. Automate tasks online with ease.",
+      "url": "https://github.com/browser-use/browser-use",
+      "stars": 75264,
+      "category": "ai-tooling",
+      "tags": [
+        "ai tools",
+        "browser use",
+        "ai",
+        "ai agents",
+        "browser automation",
+        "llm",
+        "ai-tooling"
+      ]
+    },
+    {
+      "name": "OpenHands",
+      "description": "\ud83d\ude4c OpenHands: AI-Driven Development",
+      "url": "https://github.com/OpenHands/OpenHands",
+      "stars": 66485,
+      "category": "dev-tool",
+      "tags": [
+        "artificial intelligence",
+        "ai",
+        "claude ai",
+        "chatgpt",
+        "dev-tool",
+        "agent",
+        "cli"
+      ]
+    },
+    {
+      "name": "localstack",
+      "description": "\ud83d\udcbb A fully functional local AWS cloud stack. Develop and test your cloud & Serverless apps offline",
+      "url": "https://github.com/localstack/localstack",
+      "stars": 64018,
+      "category": "dev-tool",
+      "tags": [
+        "localstack",
+        "continuous integration",
+        "aws",
+        "testing",
+        "developer tools",
+        "dev-tool",
+        "cloud"
+      ]
+    },
+    {
+      "name": "daytona",
+      "description": "Daytona is a Secure and Elastic Infrastructure for Running AI-Generated Code",
+      "url": "https://github.com/daytonaio/daytona",
+      "stars": 45151,
+      "category": "dev-tool",
+      "tags": [
+        "ai",
+        "agentic workflow",
+        "ai agents",
+        "ai sandboxes",
+        "dev-tool",
+        "ai runtime"
+      ]
+    },
+    {
+      "name": "GitHubDaily",
+      "description": "\u575a\u6301\u5206\u4eab GitHub \u4e0a\u9ad8\u8d28\u91cf\u3001\u6709\u8da3\u5b9e\u7528\u7684\u5f00\u6e90\u6280\u672f\u6559\u7a0b\u3001\u5f00\u53d1\u8005\u5de5\u5177\u3001\u7f16\u7a0b\u7f51\u7ad9\u3001\u6280\u672f\u8d44\u8baf\u3002A list cool, interesting projects of GitHub.",
+      "url": "https://github.com/GitHubDaily/GitHubDaily",
+      "stars": 44367,
+      "category": "dev-tool",
+      "tags": [
+        "ai",
+        "backend",
+        "git",
+        "developer tools",
+        "algorithms and data structures",
+        "development",
+        "dev-tool",
+        "api"
+      ]
+    },
+    {
+      "name": "streamlit",
+      "description": "Streamlit \u2014 A faster way to build and share data apps.",
+      "url": "https://github.com/streamlit/streamlit",
+      "stars": 43025,
+      "category": "dev-tool",
+      "tags": [
+        "data science",
+        "data visualization",
+        "deep learning",
+        "developer tools",
+        "dev-tool",
+        "data analysis"
+      ]
+    },
+    {
+      "name": "TrendRadar",
+      "description": "\ud83c\udfaf \u544a\u522b\u4fe1\u606f\u8fc7\u8f7d\uff0c\u4f60\u7684 AI \u8206\u60c5\u76d1\u63a7\u52a9\u624b\u4e0e\u70ed\u70b9\u7b5b\u9009\u5de5\u5177\uff01\u805a\u5408\u591a\u5e73\u53f0\u70ed\u70b9 +  RSS \u8ba2\u9605\uff0c\u652f\u6301\u5173\u952e\u8bcd\u7cbe\u51c6\u7b5b\u9009\u3002 AI \u5206\u6790\u7b80\u62a5\u76f4\u63a8\u624b\u673a\uff0c\u4e5f\u652f\u6301\u63a5\u5165 MCP \u67b6\u6784\uff0c\u8d4b\u80fd AI \u81ea\u7136\u8bed\u8a00\u5bf9\u8bdd\u5206\u6790\u3001\u60c5\u611f\u6d1e\u5bdf\u4e0e\u8d8b\u52bf\u9884\u6d4b\u3002\u652f\u6301 Docker \u4e00\u952e\u90e8\u7f72\uff0c\u6570\u636e\u672c\u5730/\u4e91\u7aef\u81ea\u6301\u3002\u96c6\u6210\u5fae\u4fe1/\u98de\u4e66/\u9489\u9489/Telegram/\u90ae\u4ef6/ntfy/bark/slack \u7b49\u6e20\u9053\u667a\u80fd\u63a8\u9001\u3002\u2b50",
+      "url": "https://github.com/sansan0/TrendRadar",
+      "stars": 42767,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "dingtalk robot",
+        "ai",
+        "docker",
+        "data analysis",
+        "bark",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "context7",
+      "description": "Context7 MCP Server -- Up-to-date code documentation for LLMs and AI code editors",
+      "url": "https://github.com/upstash/context7",
+      "stars": 41557,
+      "category": "mcp-server",
+      "tags": [
+        "mcp server",
+        "mcp",
+        "ai",
+        "vibe coding",
+        "llm",
+        "documentation",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "Files",
+      "description": "A modern file manager that helps users organize their files and folders.",
+      "url": "https://github.com/files-community/Files",
+      "stars": 41148,
+      "category": "dev-tool",
+      "tags": [
+        "csharp",
+        "alternatives",
+        "dotnet",
+        "developer tools",
+        "dev-tool",
+        "customization"
+      ]
+    },
+    {
+      "name": "bruno",
+      "description": "Opensource IDE For Exploring and Testing API's (lightweight alternative to Postman/Insomnia)",
+      "url": "https://github.com/usebruno/bruno",
+      "stars": 39869,
+      "category": "dev-tool",
+      "tags": [
+        "automation",
+        "api client",
+        "testing",
+        "api testing",
+        "git",
+        "developer tools",
+        "api",
+        "dev-tool"
+      ]
+    },
+    {
+      "name": "appsmith",
+      "description": "Platform to build admin panels, internal tools, and dashboards. Integrates with 25+ databases and any API.",
+      "url": "https://github.com/appsmithorg/appsmith",
+      "stars": 38872,
+      "category": "dev-tool",
+      "tags": [
+        "admin dashboard",
+        "app builder",
+        "automation",
+        "admin panels",
+        "api",
+        "dev-tool",
+        "crud"
+      ]
+    },
+    {
+      "name": "shellcheck",
+      "description": "ShellCheck, a static analysis tool for shell scripts",
+      "url": "https://github.com/koalaman/shellcheck",
+      "stars": 38816,
+      "category": "dev-tool",
+      "tags": [
+        "shell",
+        "bash",
+        "haskell",
+        "developer tools",
+        "dev-tool",
+        "linter"
+      ]
+    },
+    {
+      "name": "devdocs",
+      "description": "API Documentation Browser",
+      "url": "https://github.com/freeCodeCamp/devdocs",
+      "stars": 38276,
+      "category": "dev-tool",
+      "tags": [
+        "devdocs",
+        "api documentation",
+        "app",
+        "developer tools",
+        "api",
+        "dev-tool",
+        "documentation",
+        "docs"
+      ]
+    },
+    {
+      "name": "mindsdb",
+      "description": "Federated Query Engine for AI - The only MCP Server you'll ever need",
+      "url": "https://github.com/mindsdb/mindsdb",
+      "stars": 38240,
+      "category": "mcp-server",
+      "tags": [
+        "analytics",
+        "agents",
+        "mcp",
+        "ai",
+        "bigquery",
+        "artificial inteligence",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "lapce",
+      "description": "Lightning-fast and Powerful Code Editor written in Rust",
+      "url": "https://github.com/lapce/lapce",
+      "stars": 37828,
+      "category": "dev-tool",
+      "tags": [
+        "code editor",
+        "vim",
+        "developer tools",
+        "dev-tool",
+        "text editor",
+        "rust"
+      ]
+    },
+    {
+      "name": "cli",
+      "description": "\ud83e\udd67 HTTPie CLI  \u2014 modern, user-friendly command-line HTTP client for the API era. JSON support, colors, sessions, downloads, plugins & more.",
+      "url": "https://github.com/httpie/cli",
+      "stars": 37327,
+      "category": "dev-tool",
+      "tags": [
+        "client",
+        "api client",
+        "api testing",
+        "api",
+        "dev-tool",
+        "cli"
+      ]
+    },
+    {
+      "name": "awesome-cursorrules",
+      "description": "\ud83d\udcc4  Configuration files that enhance Cursor AI editor experience with custom rules and behaviors",
+      "url": "https://github.com/PatrickJS/awesome-cursorrules",
+      "stars": 36909,
+      "category": "ai-tooling",
+      "tags": [
+        "cursorrules",
+        "awesome",
+        "awesome list",
+        "ai",
+        "cursor",
+        "cursor ai editor",
+        "ai-tooling"
+      ]
+    },
+    {
+      "name": "agno",
+      "description": "The complete stack for AI Engineers: framework, runtime and control plane.",
+      "url": "https://github.com/agno-agi/agno",
+      "stars": 36796,
+      "category": "dev-tool",
+      "tags": [
+        "agents",
+        "ai",
+        "python",
+        "developer tools",
+        "ai agents",
+        "dev-tool"
+      ]
+    },
+    {
+      "name": "it-tools",
+      "description": "Collection of handy online tools for developers, with great UX. ",
+      "url": "https://github.com/CorentinTh/it-tools",
+      "stars": 36379,
+      "category": "dev-tool",
+      "tags": [
+        "converter",
+        "developer tools",
+        "frontend",
+        "developer productivity",
+        "dev-tool",
+        "javascript"
+      ]
+    },
+    {
+      "name": "stats",
+      "description": "macOS system monitor in your menu bar",
+      "url": "https://github.com/exelban/stats",
+      "stars": 35695,
+      "category": "mac-app",
+      "tags": [
+        "mac-app",
+        "mac",
+        "disk",
+        "clock",
+        "bluetooth",
+        "battery",
+        "cpu"
+      ]
+    },
+    {
+      "name": "refine",
+      "description": "A React Framework for building  internal tools, admin panels, dashboards & B2B apps with unmatched flexibility.",
+      "url": "https://github.com/refinedev/refine",
+      "stars": 33833,
+      "category": "dev-tool",
+      "tags": [
+        "developer tools",
+        "ant design",
+        "dev-tool",
+        "admin ui",
+        "admin",
+        "crud"
+      ]
+    },
+    {
+      "name": "gpt-pilot",
+      "description": "The first real AI developer",
+      "url": "https://github.com/Pythagora-io/gpt-pilot",
+      "stars": 33727,
+      "category": "dev-tool",
+      "tags": [
+        "coding assistant",
+        "codegen",
+        "ai",
+        "developer tools",
+        "dev-tool",
+        "gpt 4"
+      ]
+    },
+    {
+      "name": "1Panel",
+      "description": "\ud83d\udd25 1Panel provides an intuitive web interface and MCP Server to manage websites, files, containers, databases, and LLMs on a Linux server.",
+      "url": "https://github.com/1Panel-dev/1Panel",
+      "stars": 32821,
+      "category": "mcp-server",
+      "tags": [
+        "cockpit",
+        "mcp",
+        "1panel",
+        "docker ui",
+        "ai",
+        "docker",
+        "lamp",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "tabby",
+      "description": "Self-hosted AI coding assistant",
+      "url": "https://github.com/TabbyML/tabby",
+      "stars": 32724,
+      "category": "dev-tool",
+      "tags": [
+        "developer experience",
+        "coding assistant",
+        "codegen",
+        "ai",
+        "coding language",
+        "dev-tool"
+      ]
+    },
+    {
+      "name": "MonitorControl",
+      "description": "\ud83d\udda5 Control your display's brightness & volume on your Mac as if it was a native Apple Display. Use Apple Keyboard keys or custom shortcuts. Shows the native macOS OSDs.",
+      "url": "https://github.com/MonitorControl/MonitorControl",
+      "stars": 32076,
+      "category": "mac-app",
+      "tags": [
+        "apple",
+        "mac",
+        "ddc",
+        "display",
+        "brightness",
+        "mac-app",
+        "control"
+      ]
+    },
+    {
+      "name": "yazi",
+      "description": "\ud83d\udca5 Blazing fast terminal file manager written in Rust, based on async I/O.",
+      "url": "https://github.com/sxyazi/yazi",
+      "stars": 31369,
+      "category": "dev-tool",
+      "tags": [
+        "command line",
+        "concurrency",
+        "asyncio",
+        "dev-tool",
+        "android",
+        "cli"
+      ]
+    },
+    {
+      "name": "continue",
+      "description": "\u23e9 Ship faster with Continuous AI. Open-source CLI that can be used in TUI mode as a coding agent or Headless mode to run background agents",
+      "url": "https://github.com/continuedev/continue",
+      "stars": 30823,
+      "category": "dev-tool",
+      "tags": [
+        "ai",
+        "claude",
+        "background agents",
+        "dev-tool",
+        "agent",
+        "cli"
+      ]
+    },
+    {
+      "name": "surrealdb",
+      "description": "A scalable, distributed, collaborative, document-graph database, for the realtime web",
+      "url": "https://github.com/surrealdb/surrealdb",
+      "stars": 30795,
+      "category": "dev-tool",
+      "tags": [
+        "cloud database",
+        "database as a service",
+        "developer tools",
+        "database",
+        "dev-tool",
+        "backend as a service"
+      ]
+    },
+    {
+      "name": "DevToys",
+      "description": "A Swiss Army knife for developers.",
+      "url": "https://github.com/DevToys-app/DevToys",
+      "stars": 30730,
+      "category": "dev-tool",
+      "tags": [
+        "cross platform",
+        "csharp",
+        "desktop app",
+        "desktop",
+        "dev-tool",
+        "blazor"
+      ]
+    },
+    {
+      "name": "lighthouse",
+      "description": "Automated auditing, performance metrics, and best practices for the web.",
+      "url": "https://github.com/GoogleChrome/lighthouse",
+      "stars": 29702,
+      "category": "dev-tool",
+      "tags": [
+        "performance analysis",
+        "developer tools",
+        "best practices",
+        "dev-tool",
+        "audit",
+        "chrome devtools"
+      ]
+    },
+    {
+      "name": "composio",
+      "description": "Composio equips your AI agents & LLMs with 100+ high-quality integrations via function calling",
+      "url": "https://github.com/ComposioHQ/composio",
+      "stars": 26344,
+      "category": "dev-tool",
+      "tags": [
+        "agents",
+        "ai",
+        "aiagents",
+        "ai agents",
+        "agentic ai",
+        "dev-tool"
+      ]
+    },
+    {
+      "name": "github-mcp-server",
+      "description": "GitHub's official MCP Server",
+      "url": "https://github.com/github/github-mcp-server",
+      "stars": 25818,
+      "category": "mcp-server",
+      "tags": [
+        "mcp server",
+        "mcp",
+        "git",
+        "github",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "playwright-mcp",
+      "description": "Playwright MCP server",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "stars": 25377,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "mcp-server",
+        "playwright"
+      ]
+    },
+    {
+      "name": "Ice",
+      "description": "Powerful menu bar manager for macOS",
+      "url": "https://github.com/jordanbaird/Ice",
+      "stars": 25300,
+      "category": "mac-app",
+      "tags": [
+        "menubar app",
+        "macos app",
+        "mac",
+        "macos",
+        "menubar",
+        "menu bar",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "gpt-researcher",
+      "description": "An LLM agent that conducts deep research (local and web) on any given topic and generates a long report with citations.",
+      "url": "https://github.com/assafelovic/gpt-researcher",
+      "stars": 24804,
+      "category": "mcp-server",
+      "tags": [
+        "mcp-server",
+        "ai",
+        "automation",
+        "search",
+        "agent",
+        "llms",
+        "deepresearch"
+      ]
+    },
+    {
+      "name": "claude-task-master",
+      "description": "An AI-powered task-management system you can drop into Cursor, Lovable, Windsurf, Roo, and others.",
+      "url": "https://github.com/eyaltoledano/claude-task-master",
+      "stars": 24762,
+      "category": "ai-tooling",
+      "tags": [
+        "cursor ai",
+        "lovable",
+        "ai",
+        "cursor",
+        "cursorai",
+        "ai-tooling"
+      ]
+    },
+    {
+      "name": "responsively-app",
+      "description": "A modified web browser that helps in responsive web development. A web developer's must have dev-tool.",
+      "url": "https://github.com/responsively-org/responsively-app",
+      "stars": 24611,
+      "category": "dev-tool",
+      "tags": [
+        "desktop app",
+        "contributions welcome",
+        "developer tools",
+        "electron",
+        "dev-tool",
+        "good first issue"
+      ]
+    },
+    {
+      "name": "SteamTools",
+      "description": "\ud83d\udee0\u300cWatt Toolkit\u300d\u662f\u4e00\u4e2a\u5f00\u6e90\u8de8\u5e73\u53f0\u7684\u591a\u529f\u80fd Steam \u5de5\u5177\u7bb1\u3002",
+      "url": "https://github.com/BeyondDimension/SteamTools",
+      "stars": 24238,
+      "category": "mac-app",
+      "tags": [
+        "cross platform",
+        "crossplatform",
+        "avalonia",
+        "avaloniaui",
+        "android app",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "onlook",
+      "description": "The Cursor for Designers \u2022 An Open-Source AI-First Design tool \u2022 Visually build, style, and edit your React App with AI",
+      "url": "https://github.com/onlook-dev/onlook",
+      "stars": 23815,
+      "category": "ai-tooling",
+      "tags": [
+        "cursor ai",
+        "ai",
+        "cursor",
+        "design to code",
+        "ai-tooling",
+        "design"
+      ]
+    },
+    {
+      "name": "d2",
+      "description": "D2 is a modern diagram scripting language that turns text to diagrams.",
+      "url": "https://github.com/terrastruct/d2",
+      "stars": 22845,
+      "category": "dev-tool",
+      "tags": [
+        "go",
+        "golang",
+        "developer tools",
+        "dev-tool",
+        "diagrams",
+        "diagramming"
+      ]
+    },
+    {
+      "name": "UI-TARS-desktop",
+      "description": "The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra",
+      "url": "https://github.com/bytedance/UI-TARS-desktop",
+      "stars": 22796,
+      "category": "mcp-server",
+      "tags": [
+        "agent tars",
+        "gui agent",
+        "agent",
+        "browser use",
+        "ai",
+        "computer use",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "flow",
+      "description": "Adds static typing to JavaScript to improve developer productivity and code quality.",
+      "url": "https://github.com/facebook/flow",
+      "stars": 22209,
+      "category": "dev-tool",
+      "tags": [
+        "dev-tool",
+        "productivity"
+      ]
+    },
+    {
+      "name": "fastmcp",
+      "description": "\ud83d\ude80 The fast, Pythonic way to build MCP servers and clients",
+      "url": "https://github.com/jlowin/fastmcp",
+      "stars": 21855,
+      "category": "mcp-server",
+      "tags": [
+        "agents",
+        "mcp",
+        "fastmcp",
+        "mcp clients",
+        "cli",
+        "llms",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "repomix",
+      "description": "\ud83d\udce6 Repomix is a powerful tool that packs your entire repository into a single, AI-friendly file. Perfect for when you need to feed your codebase to Large Language Models (LLMs) or other AI tools like Claude, ChatGPT, DeepSeek, Perplexity, Gemini, Gemma, Llama, Grok, and more.",
+      "url": "https://github.com/yamadashy/repomix",
+      "stars": 21133,
+      "category": "dev-tool",
+      "tags": [
+        "artificial intelligence",
+        "chatbot",
+        "ai",
+        "dev-tool",
+        "chatgpt",
+        "anthropic"
+      ]
+    },
+    {
+      "name": "nocobase",
+      "description": "NocoBase is the most extensible AI-powered no-code/low-code platform for building business applications and enterprise solutions.",
+      "url": "https://github.com/nocobase/nocobase",
+      "stars": 21111,
+      "category": "dev-tool",
+      "tags": [
+        "airtable",
+        "admin dashboard",
+        "app builder",
+        "ai",
+        "crm",
+        "dev-tool",
+        "crud"
+      ]
+    },
+    {
+      "name": "chrome-devtools-mcp",
+      "description": "Chrome DevTools for coding agents",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "stars": 20356,
+      "category": "mcp-server",
+      "tags": [
+        "mcp-server",
+        "debugging",
+        "devtools",
+        "chrome",
+        "chrome devtools",
+        "browser"
+      ]
+    },
+    {
+      "name": "activepieces",
+      "description": "AI Agents & MCPs & AI Workflow Automation \u2022 (~400 MCP servers for AI agents) \u2022 AI Automation / AI Agent with MCPs \u2022 AI Workflows & AI Agents \u2022 MCPs for AI Agents",
+      "url": "https://github.com/activepieces/activepieces",
+      "stars": 20297,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "ai agents framework",
+        "ai",
+        "productivity",
+        "ai agents",
+        "ai agent tools",
+        "ai agent",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "MaxKB",
+      "description": "\ud83d\udd25 MaxKB is an open-source platform for building enterprise-grade agents.  \u5f3a\u5927\u6613\u7528\u7684\u5f00\u6e90\u4f01\u4e1a\u7ea7\u667a\u80fd\u4f53\u5e73\u53f0\u3002",
+      "url": "https://github.com/1Panel-dev/MaxKB",
+      "stars": 19789,
+      "category": "mcp-server",
+      "tags": [
+        "deepseek r1",
+        "knowledgebase",
+        "chatbot",
+        "agentic ai",
+        "agent",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "serena",
+      "description": "A powerful coding agent toolkit providing semantic retrieval and editing capabilities (MCP server & other integrations)",
+      "url": "https://github.com/oraios/serena",
+      "stars": 18486,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "ai",
+        "claude code",
+        "claude",
+        "ai coding",
+        "agent",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "xbar",
+      "description": "Put the output from any script or program into your macOS Menu Bar (the BitBar reboot)",
+      "url": "https://github.com/matryer/xbar",
+      "stars": 17984,
+      "category": "mac-app",
+      "tags": [
+        "bitbar",
+        "mac",
+        "macos menu",
+        "menubar",
+        "macosx",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "avante.nvim",
+      "description": "Use your Neovim like using Cursor AI IDE!",
+      "url": "https://github.com/yetone/avante.nvim",
+      "stars": 17086,
+      "category": "ai-tooling",
+      "tags": [
+        "ai",
+        "ai-tooling"
+      ]
+    },
+    {
+      "name": "moonlight-qt",
+      "description": "GameStream client for PCs (Windows, Mac, Linux, and Steam Link)",
+      "url": "https://github.com/moonlight-stream/moonlight-qt",
+      "stars": 15797,
+      "category": "mac-app",
+      "tags": [
+        "nvidia",
+        "macos app",
+        "moonlight",
+        "mac",
+        "gamestream",
+        "linux app",
+        "cli",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "plandex",
+      "description": "Open source AI coding agent. Designed for large projects and real world tasks.",
+      "url": "https://github.com/plandex-ai/plandex",
+      "stars": 14876,
+      "category": "ai-tooling",
+      "tags": [
+        "ai tools",
+        "ai",
+        "ai agents",
+        "ai developer tools",
+        "ai-tooling",
+        "cli"
+      ]
+    },
+    {
+      "name": "mcp-for-beginners",
+      "description": "This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust and Python. Designed for developers, it focuses on practical techniques for building modular, scalable, and secure AI workfl",
+      "url": "https://github.com/microsoft/mcp-for-beginners",
+      "stars": 14015,
+      "category": "mcp-server",
+      "tags": [
+        "csharp",
+        "mcp",
+        "java",
+        "ai",
+        "productivity",
+        "javascript",
+        "javascript applications",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "electerm",
+      "description": "\ud83d\udcfbTerminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC client(linux, mac, win)",
+      "url": "https://github.com/electerm/electerm",
+      "stars": 13456,
+      "category": "mac-app",
+      "tags": [
+        "mac",
+        "electerm",
+        "file manager",
+        "electron",
+        "linux app",
+        "ftp",
+        "cli",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "trigger.dev",
+      "description": "Trigger.dev \u2013 build and deploy fully\u2011managed AI agents and workflows",
+      "url": "https://github.com/triggerdotdev/trigger.dev",
+      "stars": 13265,
+      "category": "mcp-server",
+      "tags": [
+        "ai agent framework",
+        "ai",
+        "automation",
+        "productivity",
+        "ai agents",
+        "background jobs",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "hidden",
+      "description": "An ultra-light MacOS utility that helps hide menu bar icons",
+      "url": "https://github.com/dwarvesf/hidden",
+      "stars": 13151,
+      "category": "mac-app",
+      "tags": [
+        "swift",
+        "mac",
+        "utilities",
+        "macos",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "CL4R1T4S",
+      "description": "LEAKED SYSTEM PROMPTS FOR CHATGPT, GEMINI, GROK, CLAUDE, PERPLEXITY, CURSOR, DEVIN, REPLIT, AND MORE! - AI SYSTEMS TRANSPARENCY FOR ALL! \ud83d\udc50",
+      "url": "https://github.com/elder-plinius/CL4R1T4S",
+      "stars": 12481,
+      "category": "ai-tooling",
+      "tags": [
+        "agents",
+        "gemini",
+        "ai",
+        "chatgpt",
+        "google",
+        "ai-tooling"
+      ]
+    },
+    {
+      "name": "Figma-Context-MCP",
+      "description": "MCP server to provide Figma layout information to AI coding agents like Cursor",
+      "url": "https://github.com/GLips/Figma-Context-MCP",
+      "stars": 12479,
+      "category": "mcp-server",
+      "tags": [
+        "typescript",
+        "mcp",
+        "ai",
+        "cursor",
+        "figma",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "genai-toolbox",
+      "description": "MCP Toolbox for Databases is an open source MCP server for databases.",
+      "url": "https://github.com/googleapis/genai-toolbox",
+      "stars": 12375,
+      "category": "mcp-server",
+      "tags": [
+        "agents",
+        "mcp",
+        "ai",
+        "bigquery",
+        "clickhouse",
+        "agent",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "nanobrowser",
+      "description": "Open-Source Chrome extension for AI-powered web automation. Run multi-agent workflows using your own LLM API key. Alternative to OpenAI Operator.",
+      "url": "https://github.com/nanobrowser/nanobrowser",
+      "stars": 11888,
+      "category": "ai-tooling",
+      "tags": [
+        "ai tools",
+        "ai",
+        "automation",
+        "ai-tooling",
+        "productivity",
+        "ai agents",
+        "api",
+        "agent"
+      ]
+    },
+    {
+      "name": "n8n-mcp",
+      "description": "A MCP for Claude Desktop / Claude Code / Windsurf / Cursor to build n8n workflows for you ",
+      "url": "https://github.com/czlonkowski/n8n-mcp",
+      "stars": 11548,
+      "category": "mcp-server",
+      "tags": [
+        "mcp server",
+        "mcp",
+        "ai",
+        "n8n",
+        "productivity",
+        "workflows",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "claude-flow",
+      "description": "\ud83c\udf0a The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features    enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code support via MCP proto",
+      "url": "https://github.com/ruvnet/claude-flow",
+      "stars": 11432,
+      "category": "mcp-server",
+      "tags": [
+        "agentic framework",
+        "mcp",
+        "ai",
+        "agentic workflow",
+        "productivity",
+        "agentic ai",
+        "agentic rag",
+        "agentic engineering"
+      ]
+    },
+    {
+      "name": "fastapi_mcp",
+      "description": "Expose your FastAPI endpoints as Model Context Protocol (MCP) tools, with Auth!",
+      "url": "https://github.com/tadata-org/fastapi_mcp",
+      "stars": 11354,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "ai",
+        "cursor",
+        "claude",
+        "authorization",
+        "authentication",
+        "api",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "pal-mcp-server",
+      "description": "The power of Claude Code / GeminiCLI / CodexCLI + [Gemini / OpenAI / OpenRouter / Azure / Grok / Ollama / Custom Model / All Of The Above] working as one.",
+      "url": "https://github.com/BeehiveInnovations/pal-mcp-server",
+      "stars": 10805,
+      "category": "mcp-server",
+      "tags": [
+        "cli",
+        "ai",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "cc-switch",
+      "description": "A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI.",
+      "url": "https://github.com/farion1231/cc-switch",
+      "stars": 10581,
+      "category": "ai-tooling",
+      "tags": [
+        "desktop app",
+        "ai tools",
+        "ai",
+        "codex",
+        "claude code",
+        "ai-tooling",
+        "cli",
+        "deepseek v3"
+      ]
+    },
+    {
+      "name": "nginx-ui",
+      "description": "Yet another WebUI for Nginx",
+      "url": "https://github.com/0xJacky/nginx-ui",
+      "stars": 10380,
+      "category": "mcp-server",
+      "tags": [
+        "deepseek r1",
+        "chatgpt app",
+        "code completion",
+        "cron",
+        "copilot",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "bytebot",
+      "description": "Bytebot is a self-hosted AI desktop agent that automates computer tasks through natural language commands, operating within a containerized Linux desktop environment.",
+      "url": "https://github.com/bytebot-ai/bytebot",
+      "stars": 10190,
+      "category": "ai-tooling",
+      "tags": [
+        "agents",
+        "ai",
+        "ai-tooling",
+        "agentic ai",
+        "ai agents",
+        "docker",
+        "agent"
+      ]
+    },
+    {
+      "name": "mcp-chrome",
+      "description": "Chrome MCP Server is a Chrome extension-based Model Context Protocol (MCP) server that exposes your Chrome browser functionality to AI assistants like Claude, enabling complex browser automation, content analysis, and semantic search.",
+      "url": "https://github.com/hangwin/mcp-chrome",
+      "stars": 9882,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "ai",
+        "search",
+        "productivity",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "Loop",
+      "description": "Window management made elegant.",
+      "url": "https://github.com/MrKai77/Loop",
+      "stars": 9864,
+      "category": "mac-app",
+      "tags": [
+        "menu",
+        "macos app",
+        "productivity",
+        "macos",
+        "hacktoberfest",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "XHS-Downloader",
+      "description": "\u5c0f\u7ea2\u4e66\uff08XiaoHongShu\u3001RedNote\uff09\u94fe\u63a5\u63d0\u53d6/\u4f5c\u54c1\u91c7\u96c6\u5de5\u5177\uff1a\u63d0\u53d6\u8d26\u53f7\u53d1\u5e03\u3001\u6536\u85cf\u3001\u70b9\u8d5e\u3001\u4e13\u8f91\u4f5c\u54c1\u94fe\u63a5\uff1b\u63d0\u53d6\u641c\u7d22\u7ed3\u679c\u4f5c\u54c1\u3001\u7528\u6237\u94fe\u63a5\uff1b\u91c7\u96c6\u5c0f\u7ea2\u4e66\u4f5c\u54c1\u4fe1\u606f\uff1b\u63d0\u53d6\u5c0f\u7ea2\u4e66\u4f5c\u54c1\u4e0b\u8f7d\u5730\u5740\uff1b\u4e0b\u8f7d\u5c0f\u7ea2\u4e66\u65e0\u6c34\u5370\u4f5c\u54c1\u6587\u4ef6",
+      "url": "https://github.com/JoeanAmier/XHS-Downloader",
+      "stars": 9719,
+      "category": "mcp-server",
+      "tags": [
+        "httpx",
+        "fastapi",
+        "docker",
+        "api",
+        "download",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "mcp-use",
+      "description": "mcp-use is the easiest way to interact with mcp servers with custom agents",
+      "url": "https://github.com/mcp-use/mcp-use",
+      "stars": 8883,
+      "category": "mcp-server",
+      "tags": [
+        "agentic framework",
+        "mcp",
+        "ai",
+        "apps sdk",
+        "claude code",
+        "chatgpt",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "Sloth",
+      "description": "Mac app that shows all open files, directories, sockets, pipes and devices in use by all running processes. Nice GUI for lsof.",
+      "url": "https://github.com/sveinbjornt/Sloth",
+      "stars": 8809,
+      "category": "mac-app",
+      "tags": [
+        "directories",
+        "ip sockets",
+        "gui",
+        "mac",
+        "filter",
+        "domain sockets",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "Scrapling",
+      "description": "\ud83d\udd77\ufe0f An undetectable, powerful, flexible, high-performance Python library to make Web Scraping Easy and Effortless as it should be!",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "stars": 8744,
+      "category": "mcp-server",
+      "tags": [
+        "ai scraping",
+        "ai",
+        "automation",
+        "crawling",
+        "api",
+        "crawler",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "Dozer",
+      "description": "Hide menu bar icons on macOS",
+      "url": "https://github.com/Mortennn/Dozer",
+      "stars": 8602,
+      "category": "mac-app",
+      "tags": [
+        "mac",
+        "statusbar",
+        "macos",
+        "utility",
+        "minimalistic",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "OpenMetadata",
+      "description": "OpenMetadata is a unified metadata platform for data discovery, data observability, and data governance powered by a central metadata repository, in-depth column level lineage, and seamless team collaboration.",
+      "url": "https://github.com/open-metadata/OpenMetadata",
+      "stars": 8397,
+      "category": "mcp-server",
+      "tags": [
+        "mcp-server",
+        "data collaboration",
+        "data contracts",
+        "data governance",
+        "data discovery",
+        "data catalog"
+      ]
+    },
+    {
+      "name": "Gifski",
+      "description": "\ud83c\udf08 Convert videos to high-quality GIFs on your Mac",
+      "url": "https://github.com/sindresorhus/Gifski",
+      "stars": 8275,
+      "category": "mac-app",
+      "tags": [
+        "app",
+        "gif",
+        "mac",
+        "converter",
+        "convert videos",
+        "gif animation",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "inspector",
+      "description": "Visual testing tool for MCP servers",
+      "url": "https://github.com/modelcontextprotocol/inspector",
+      "stars": 8242,
+      "category": "mcp-server",
+      "tags": [
+        "testing",
+        "mcp",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "xiaozhi-esp32-server",
+      "description": "\u672c\u9879\u76ee\u4e3axiaozhi-esp32\u63d0\u4f9b\u540e\u7aef\u670d\u52a1\uff0c\u5e2e\u52a9\u60a8\u5feb\u901f\u642d\u5efaESP32\u8bbe\u5907\u63a7\u5236\u670d\u52a1\u5668\u3002Backend service for xiaozhi-esp32, helps you quickly build an ESP32 device control server.",
+      "url": "https://github.com/xinnan-tech/xiaozhi-esp32-server",
+      "stars": 8227,
+      "category": "mcp-server",
+      "tags": [
+        "mcp server",
+        "dify",
+        "xiaozhi ai",
+        "esp32",
+        "xiaozhi",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "spec",
+      "description": "The Score Specification provides a developer-centric and platform-agnostic Workload specification to improve developer productivity and experience. It eliminates configuration inconsistencies between environments.",
+      "url": "https://github.com/score-spec/spec",
+      "stars": 7999,
+      "category": "dev-tool",
+      "tags": [
+        "dev-tool",
+        "productivity"
+      ]
+    },
+    {
+      "name": "xiaohongshu-mcp",
+      "description": "MCP for xiaohongshu.com",
+      "url": "https://github.com/xpzouying/xiaohongshu-mcp",
+      "stars": 7970,
+      "category": "mcp-server",
+      "tags": [
+        "xiaohongshu mcp",
+        "mcp server",
+        "mcp",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "mcp",
+      "description": "AWS MCP Servers \u2014 helping you get the most out of AWS, wherever you use MCP.",
+      "url": "https://github.com/awslabs/mcp",
+      "stars": 7837,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "aws",
+        "mcp host",
+        "mcp clients",
+        "mcp client",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "lamda",
+      "description": " The most powerful Android RPA agent framework, next generation of mobile automation robots.",
+      "url": "https://github.com/firerpa/lamda",
+      "stars": 7539,
+      "category": "mcp-server",
+      "tags": [
+        "adb",
+        "agents",
+        "ai",
+        "productivity",
+        "appium",
+        "android",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "CotEditor",
+      "description": "Lightweight Plain-Text Editor for macOS",
+      "url": "https://github.com/coteditor/CotEditor",
+      "stars": 7502,
+      "category": "mac-app",
+      "tags": [
+        "cocoa",
+        "coteditor",
+        "ai",
+        "mac",
+        "editor",
+        "macos",
+        "mac app",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "git-mcp",
+      "description": "Put an end to code hallucinations! GitMCP is a free, open-source, remote MCP server for any GitHub project",
+      "url": "https://github.com/idosal/git-mcp",
+      "stars": 7358,
+      "category": "mcp-server",
+      "tags": [
+        "agents",
+        "mcp",
+        "ai",
+        "claude",
+        "git",
+        "agentic ai",
+        "copilot",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "caprine",
+      "description": "Elegant Facebook Messenger desktop app",
+      "url": "https://github.com/sindresorhus/caprine",
+      "stars": 7282,
+      "category": "mac-app",
+      "tags": [
+        "app",
+        "chat",
+        "caprine",
+        "electron",
+        "electron app",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "GhidraMCP",
+      "description": "MCP Server for Ghidra",
+      "url": "https://github.com/LaurieWired/GhidraMCP",
+      "stars": 7043,
+      "category": "mcp-server",
+      "tags": [
+        "mcp",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "browser-tools-mcp",
+      "description": "Monitor browser logs directly from Cursor and other MCP compatible IDEs.",
+      "url": "https://github.com/AgentDeskAI/browser-tools-mcp",
+      "stars": 6970,
+      "category": "mcp-server",
+      "tags": [
+        "mcp server",
+        "mcp",
+        "ai",
+        "cursor",
+        "anthropic",
+        "mcp-server"
+      ]
+    },
+    {
+      "name": "ChatGPT-Shortcut",
+      "description": "\ud83d\ude80\ud83d\udcaaMaximize your efficiency and productivity. The ultimate hub to manage, customize, and share prompts. (English/\u4e2d\u6587/Espa\u00f1ol/\u0627\u0644\u0639\u0631\u0628\u064a\u0629). \u8ba9\u751f\u4ea7\u529b\u52a0\u500d\u7684 AI \u5feb\u6377\u6307\u4ee4\u3002\u66f4\u9ad8\u6548\u5730\u7ba1\u7406\u63d0\u793a\u8bcd\uff0c\u5728\u5206\u4eab\u793e\u533a\u4e2d\u53d1\u73b0\u9002\u7528\u4e8e\u4e0d\u540c\u573a\u666f\u7684\u7075\u611f\u3002",
+      "url": "https://github.com/rockbenben/ChatGPT-Shortcut",
+      "stars": 6921,
+      "category": "ai-tooling",
+      "tags": [
+        "ai tools",
+        "ai",
+        "chatgpt prompts",
+        "productivity",
+        "chatgpt",
+        "ai-tooling",
+        "gpt"
+      ]
+    },
+    {
+      "name": "wealthfolio",
+      "description": "A Beautiful Private and Secure Desktop Investment Tracking Application",
+      "url": "https://github.com/afadil/wealthfolio",
+      "stars": 6816,
+      "category": "mac-app",
+      "tags": [
+        "tauri app",
+        "macos app",
+        "portfolio tracker",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "venera",
+      "description": "A comic app",
+      "url": "https://github.com/venera-app/venera",
+      "stars": 6727,
+      "category": "mac-app",
+      "tags": [
+        "flutter",
+        "ios app",
+        "comic",
+        "linux",
+        "android app",
+        "mac-app"
+      ]
+    },
+    {
+      "name": "Skill_Seekers",
+      "description": "Convert documentation websites, GitHub repositories, and PDFs into Claude AI skills with automatic conflict detection",
+      "url": "https://github.com/yusufkaraaslan/Skill_Seekers",
+      "stars": 6459,
+      "category": "mcp-server",
+      "tags": [
+        "ai tools",
+        "claude skills",
+        "ast parser",
+        "automation",
+        "claude ai",
+        "ai",
+        "git",
+        "documentation"
+      ]
+    },
+    {
+      "name": "larastan",
+      "description": "\u2697\ufe0f Adds code analysis to Laravel improving developer productivity and code quality.",
+      "url": "https://github.com/larastan/larastan",
+      "stars": 6256,
+      "category": "dev-tool",
+      "tags": [
+        "phpstan",
+        "productivity",
+        "dev-tool",
+        "code analysis",
+        "php",
+        "laravel"
+      ]
+    }
+  ]
+}
