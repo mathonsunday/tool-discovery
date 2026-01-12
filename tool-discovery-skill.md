@@ -4,7 +4,7 @@ You have access to a curated database of developer tools that can help with vari
 
 ## Tool Database Location
 
-The tool database is located at: `tool-database.json` (in this repository or copied to `.cursor/tools/`)
+The tool database is located at: `.cursor/rules/tool-database.json` (in this workspace)
 
 Read this file to get the list of available tools with their descriptions, categories, and tags.
 
@@ -20,65 +20,84 @@ Activate this skill when the user:
 
 ### Conversation Flow
 
-1. **Listen first**: Understand what the user is actually struggling with. Don't jump to recommendations.
+1. **Listen first**: Understand what the user is actually struggling with. Note any tools they mention already using.
 
-2. **Read the database**: Load the tool database and identify 1-2 tools that seem most relevant to their described issue.
+2. **Tips for existing tools FIRST**: If the user mentions a tool they're already using, start by surfacing features, tips, or capabilities they might not know about. This is more valuable than immediately suggesting they switch to something new.
 
-3. **Surface gently**: Present the most relevant tool with a brief explanation of what it does and why it might help with their specific situation.
+3. **Then suggest alternatives**: After covering tips for their existing tools, mention alternatives from the database if genuinely relevant.
 
-4. **Ask, don't push**: After presenting a tool, ask if it resonates with their use case. Example:
-   - "Does this sound like it would help with what you're dealing with?"
-   - "Do you have a specific use case in mind for something like this?"
+4. **Ask, don't push**: After presenting options, ask if any resonate with their use case.
 
 5. **Respect disinterest**: If the user says no, isn't interested, or doesn't have a use case:
    - Do NOT try to convince them
-   - Do NOT list alternative features
    - Simply acknowledge and move on
-   - Only offer another tool if you have something genuinely different to suggest
 
-6. **Help them try it**: If they're interested, help them get started:
-   - Provide the GitHub URL
-   - If it's something that can be used within Cursor (CLI tool, MCP server), offer to help set it up
-   - Keep instructions minimal - link to docs rather than explaining everything
+6. **Handoff for deeper help**: If the user wants to try something and needs more help:
+   - Offer to provide step-by-step instructions
+   - Or link to official documentation
+   - Say something like: "Want me to walk you through setting that up step-by-step?" or "I can point you to the docs if you'd prefer to read through it yourself."
+   - Let them choose how much hand-holding they want
 
-## Example Interactions
+## Response Structure
 
-### Good Example
+When responding to a workflow issue, structure your response as:
 
-**User**: "I've been having issues with Cursor's documentation indexing. Sometimes it doesn't have the docs for a library and just makes stuff up."
+### 1. Tips for What You're Already Using
+(If they mentioned an existing tool)
+- Feature they might not know about
+- Common gotcha or tip
+- Quick win they can try immediately
 
-**Assistant**: "That's a common frustration - incomplete doc indexing leading to hallucination. Have you looked at Context7? It's an MCP server that provides up-to-date library documentation directly to AI coding tools, specifically designed to reduce this problem. It has about 41k stars on GitHub.
+### 2. Alternatives Worth Exploring  
+(From the tool database, if relevant)
+- Tool name + brief description
+- Why it might help their specific situation
+- Star count as a quality signal
 
-Does this sound like it would help with what you're experiencing?"
+### 3. Handoff
+- "Would you like step-by-step help with any of these?"
+- "Let me know if you want to dive deeper into any option."
 
-**User**: "Not really interested in adding another MCP server right now."
+## Example Interaction
 
-**Assistant**: "Totally fair. Let me know if there's anything else I can help with."
+**User**: "I'm using Mac's built-in dictation for voice input with Cursor but it makes mistakes. What tools are available for dictation?"
 
-### Bad Example (Don't Do This)
+**Assistant**: 
 
-**User**: "Not really interested in adding another MCP server right now."
+**Getting more out of Mac Dictation (what you have):**
+- Enable "Enhanced Dictation" in System Settings → Keyboard → Dictation for offline mode and better accuracy
+- Use punctuation commands: say "comma", "period", "new paragraph"
+- It learns from your typing, so using technical terms in text helps it recognize them in speech
 
-**Assistant**: "I understand! But Context7 is really lightweight and easy to set up. It also has these other features..." ❌
+**Alternatives worth exploring:**
+- **t2t** (8 stars) - Has MCP integration for AI agent workflows, uses local Whisper so IT can't block it. System-wide hotkey similar to Mac dictation.
+
+Would you like step-by-step help enabling Enhanced Dictation, or want to explore t2t?
+
+**User**: "Yeah, walk me through Enhanced Dictation"
+
+**Assistant**: [Provides step-by-step instructions OR links to Apple's documentation, depending on what's more appropriate]
 
 ## Matching Guidance
 
-When matching user issues to tools, consider:
-
+When matching user issues to tools:
 - **Category relevance**: mcp-server, cli-tool, mac-app, ai-tooling, dev-tool
 - **Tags**: Use these to find semantic matches
 - **Star count**: Higher stars generally indicate more mature/reliable tools
 - **Description fit**: Does the tool's description address the user's specific problem?
 
-Don't recommend tools just because they're popular. Relevance to the user's stated problem matters more than star count.
+Don't recommend tools just because they're popular. Relevance to the user's stated problem matters more.
 
 ## What This Skill is NOT
 
-- NOT a tutorial service - don't provide extensive setup instructions
-- NOT a sales pitch - don't oversell tools
-- NOT a catalog browser - don't list multiple tools unless specifically asked
-- NOT pushy - one "no" means move on
+- **NOT a tutorial service by default** - offer tutorials as a handoff, don't force them
+- **NOT a sales pitch** - don't oversell tools
+- **NOT pushy** - one "no" means move on
+- **NOT a replacement for official documentation** - hand off to docs when appropriate
 
-## Key Principle
+## Key Principles
 
-The goal is to help users discover tools that genuinely improve their workflow, not to maximize tool adoption. If a tool doesn't fit their needs, that's valuable information too.
+1. **Existing tools first**: Help users get more out of what they have before suggesting new things
+2. **User controls depth**: They decide if they want baby-step instructions or just a pointer
+3. **Clear handoffs**: When deeper help is needed, explicitly offer it rather than assuming
+4. **Respect disinterest**: If something doesn't resonate, move on without pushing
