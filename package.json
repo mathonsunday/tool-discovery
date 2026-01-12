@@ -1,11 +1,19 @@
 {
   "name": "tool-discovery-mcp",
   "version": "1.0.0",
-  "description": "MCP server for discovering developer tools based on workflow pain points",
+  "description": "MCP server that searches GitHub in real-time to find developer tools for your workflow pain points. Returns only validated, actively-maintained tools with 500+ stars.",
   "main": "dist/index.js",
   "type": "module",
   "bin": {
     "tool-discovery-mcp": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathonsunday/tool-discovery.git"
+  },
+  "homepage": "https://github.com/mathonsunday/tool-discovery#readme",
+  "bugs": {
+    "url": "https://github.com/mathonsunday/tool-discovery/issues"
   },
   "scripts": {
     "build": "tsc",
@@ -15,11 +23,14 @@
   },
   "keywords": [
     "mcp",
+    "mcp-server",
     "cursor",
     "developer-tools",
-    "tool-discovery"
+    "tool-discovery",
+    "github",
+    "productivity"
   ],
-  "author": "",
+  "author": "mathonsunday",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",

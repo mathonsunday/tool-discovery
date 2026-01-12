@@ -18,13 +18,33 @@ When you ask about tools or describe a workflow issue:
 
 ## Installation
 
+### Option 1: NPM (Recommended)
+
+No installation needed - just add to your Cursor config.
+
+Add to your `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "tool-discovery": {
+      "command": "npx",
+      "args": ["-y", "tool-discovery-mcp"]
+    }
+  }
+}
+```
+
+Then restart Cursor (or toggle the MCP server off/on in settings).
+
+### Option 2: From Source
+
 ```bash
+git clone https://github.com/mathonsunday/tool-discovery.git
 cd tool-discovery
 npm install
 npm run build
 ```
-
-## Adding to Cursor
 
 Add to your `~/.cursor/mcp.json`:
 
@@ -38,8 +58,6 @@ Add to your `~/.cursor/mcp.json`:
   }
 }
 ```
-
-Then restart Cursor (or toggle the MCP server off/on in settings).
 
 ## Usage
 
