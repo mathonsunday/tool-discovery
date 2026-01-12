@@ -7,48 +7,55 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
-import * as fs from "fs";
-import * as path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Tool database types
-interface Tool {
+// GitHub search result types
+interface GitHubRepo {
   name: string;
-  description: string;
-  url: string;
-  stars: number;
-  category: string;
-  tags: string[];
+  full_name: string;
+  description: string | null;
+  html_url: string;
+  stargazers_count: number;
+  updated_at: string;
+  archived: boolean;
+  topics: string[];
 }
 
-interface ToolDatabase {
-  metadata: {
-    version: string;
-    tool_count: number;
-  };
-  tools: Tool[];
+interface GitHubSearchResponse {
+  total_count: number;
+  items: GitHubRepo[];
 }
 
-// Load tool database
-function loadToolDatabase(): ToolDatabase {
-  // Try multiple locations for the database
-  const possiblePaths = [
-    path.join(__dirname, "..", "tool-database.json"),  // When running from dist/
-    path.join(__dirname, "tool-database.json"),        // When in same dir
-    path.join(process.cwd(), "tool-database.json"),    // Current working directory
-  ];
+// Search GitHub for tools matching a query
+async function searchGitHub(query: string, minStars: number = 500): Promise<GitHubRepo[]> {
+  // Build search query with quality filters
+  const searchQuery = encodeURIComponent(`${query} stars:>=${minStars} archived:false`);
+  const url = `https://api.github.com/search/repositories?q=${searchQuery}&sort=stars&order=desc&per_page=10`;
   
-  for (const dbPath of possiblePaths) {
-    if (fs.existsSync(dbPath)) {
-      const data = fs.readFileSync(dbPath, "utf-8");
-      return JSON.parse(data);
-    }
+  console.error(`[tool-discovery] Searching GitHub: ${query}`);
+  
+  const response = await fetch(url, {
+    headers: {
+      "Accept": "application/vnd.github.v3+json",
+      "User-Agent": "tool-discovery-mcp",
+    },
+  });
+  
+  if (!response.ok) {
+    console.error(`[tool-discovery] GitHub API error: ${response.status}`);
+    throw new Error(`GitHub API error: ${response.status}`);
   }
   
-  throw new Error("Could not find tool-database.json");
+  const data = await response.json() as GitHubSearchResponse;
+  console.error(`[tool-discovery] Found ${data.total_count} results`);
+  
+  // Filter to only recently updated repos (within last 2 years)
+  const twoYearsAgo = new Date();
+  twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+  
+  return data.items.filter(repo => {
+    const updatedAt = new Date(repo.updated_at);
+    return updatedAt > twoYearsAgo && !repo.archived;
+  });
 }
 
 // Tips for common tools (expandable)
@@ -57,7 +64,6 @@ const TOOL_TIPS: Record<string, string[]> = {
     "Enable 'Enhanced Dictation' in System Settings → Keyboard → Dictation for offline mode and better accuracy",
     "Use punctuation commands: say 'comma', 'period', 'new paragraph', 'new line'",
     "Say 'caps on' and 'caps off' to control capitalization",
-    "It learns from your typing - using technical terms in text helps recognition",
   ],
   "cursor": [
     "Use Cmd+K for inline edits, Cmd+L for chat",
@@ -68,17 +74,18 @@ const TOOL_TIPS: Record<string, string[]> = {
   "git": [
     "Use 'git stash' to temporarily save changes without committing",
     "Use 'git log --oneline --graph' for a visual branch history",
-    "Use 'git blame' to see who changed each line",
   ],
   "vscode": [
     "Cmd+Shift+P opens the command palette",
     "Cmd+P for quick file open, then type @ to jump to symbols",
-    "Multi-cursor: Cmd+D to select next occurrence",
   ],
-  "terminal": [
-    "Use Ctrl+R for reverse history search",
-    "Use 'cd -' to go back to previous directory",
-    "Use '!!' to repeat last command",
+  "homebrew": [
+    "Use 'brew bundle' to manage all your packages in a Brewfile",
+    "Use 'brew upgrade --greedy' to update cask apps too",
+  ],
+  "raycast": [
+    "Use snippets for frequently typed text",
+    "Clipboard history (Cmd+Shift+V) saves tons of time",
   ],
 };
 
@@ -97,60 +104,6 @@ function findTipsForTools(existingTools: string[]): Array<{ tool: string; tips: 
   }
   
   return results;
-}
-
-// Score a tool's relevance to a problem description
-function scoreToolRelevance(tool: Tool, problem: string): number {
-  const problemLower = problem.toLowerCase();
-  const words = problemLower.split(/\s+/);
-  
-  let score = 0;
-  
-  // Check description match
-  const descLower = tool.description.toLowerCase();
-  for (const word of words) {
-    if (word.length > 3 && descLower.includes(word)) {
-      score += 2;
-    }
-  }
-  
-  // Check tag match
-  for (const tag of tool.tags) {
-    const tagLower = tag.toLowerCase();
-    if (problemLower.includes(tagLower)) {
-      score += 3;
-    }
-    for (const word of words) {
-      if (word.length > 3 && tagLower.includes(word)) {
-        score += 1;
-      }
-    }
-  }
-  
-  // Check name match
-  if (problemLower.includes(tool.name.toLowerCase())) {
-    score += 5;
-  }
-  
-  // Bonus for star count (normalized)
-  score += Math.log10(tool.stars + 1) * 0.5;
-  
-  return score;
-}
-
-// Find relevant tools for a problem
-function findRelevantTools(db: ToolDatabase, problem: string, limit: number = 5): Tool[] {
-  const scored = db.tools.map(tool => ({
-    tool,
-    score: scoreToolRelevance(tool, problem),
-  }));
-  
-  scored.sort((a, b) => b.score - a.score);
-  
-  // Filter out low-relevance results
-  const relevant = scored.filter(s => s.score > 2);
-  
-  return relevant.slice(0, limit).map(s => s.tool);
 }
 
 // Create the MCP server
@@ -178,15 +131,19 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     tools: [
       {
         name: "discover_tools",
-        description: `Help users discover developer tools for their workflow pain points. 
-        
-This tool:
-1. Provides tips for tools the user is already using (if mentioned)
-2. Suggests relevant alternatives from a curated database of 100+ tools
-3. Returns structured results that can be formatted nicely
+        description: `Search GitHub in real-time to find developer tools for workflow pain points.
 
-Use this when a user describes a workflow issue, asks about tools for a task, 
-or wants to improve their development setup.`,
+WHEN TO USE THIS TOOL:
+- User asks "is there a tool for X?"
+- User describes a workflow problem or pain point
+- User wants recommendations for utilities, CLI tools, or productivity apps
+- User asks about alternatives to a tool they're using
+
+WHY USE THIS INSTEAD OF ANSWERING DIRECTLY:
+- Returns only REAL tools that exist on GitHub with 500+ stars
+- Filters to actively maintained projects (updated in last 2 years)
+- Provides actual GitHub URLs and star counts as quality signals
+- Prevents recommending abandoned, obscure, or non-existent tools`,
         inputSchema: {
           type: "object",
           properties: {
@@ -209,41 +166,56 @@ or wants to improve their development setup.`,
 
 // Handle tool calls
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  console.error(`[tool-discovery] Tool called: ${request.params.name}`);
+  console.error(`[tool-discovery] Arguments: ${JSON.stringify(request.params.arguments)}`);
+  
   if (request.params.name !== "discover_tools") {
     throw new Error(`Unknown tool: ${request.params.name}`);
   }
 
   const args = DiscoverToolsSchema.parse(request.params.arguments);
-  const db = loadToolDatabase();
 
   // Find tips for existing tools
   const existingTools = args.existing_tools || [];
   const tips = findTipsForTools(existingTools);
 
-  // Find relevant alternatives
-  const alternatives = findRelevantTools(db, args.problem, 5);
+  // Search GitHub for relevant tools
+  let githubResults: GitHubRepo[] = [];
+  try {
+    githubResults = await searchGitHub(args.problem);
+  } catch (error) {
+    console.error(`[tool-discovery] GitHub search failed: ${error}`);
+  }
 
   // Format response
   const response: {
     tips_for_existing_tools: Array<{ tool: string; tips: string[] }>;
-    alternatives: Array<{
+    tools_found: Array<{
       name: string;
-      description: string;
+      full_name: string;
+      description: string | null;
       url: string;
       stars: number;
-      category: string;
+      topics: string[];
+      last_updated: string;
     }>;
+    search_query: string;
     handoff_message: string;
   } = {
     tips_for_existing_tools: tips,
-    alternatives: alternatives.map(t => ({
-      name: t.name,
-      description: t.description,
-      url: t.url,
-      stars: t.stars,
-      category: t.category,
+    tools_found: githubResults.map(repo => ({
+      name: repo.name,
+      full_name: repo.full_name,
+      description: repo.description,
+      url: repo.html_url,
+      stars: repo.stargazers_count,
+      topics: repo.topics,
+      last_updated: repo.updated_at,
     })),
-    handoff_message: "Would you like step-by-step help with any of these options?",
+    search_query: args.problem,
+    handoff_message: githubResults.length > 0 
+      ? "Would you like more details about any of these tools, or should I search with different keywords?"
+      : "No results found. Would you like me to try different search terms?",
   };
 
   return {
